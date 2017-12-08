@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Анкета</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="js/logic.js"></script>
+</head>
+<body>
+	<div class="main-Box">
+		<div class="item-list">
+			<ul class="pager" style="padding-left: 0px;">
+				<li class="current"><span>1</span></li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ul>
+		</div>
+		<div class="text-place">
+			<p><b>1. Введите имя и e-mail</b></p>
+		</div>
+		<div class="nameAndEmail" style="display :block;">
+			<p><input type="text" name="firstName" placeholder="Имя"></p>
+			<p><input type="text" name="eMail" placeholder="e-mail"></p>
+		</div>
+		<div class="countryAndCity" style="display :none;">
+			<p><input type="text" name="Country" placeholder="Страна"></p>
+			<p><input type="text" name="city" placeholder="Город"></p>
+		</div>
+		<div class="buttons">
+			<a id="prevPage" onclick="prevPage()"><b>  < Предыдущий  </b></a>
+			<a id="nextPage" onclick="nextPage()"><b>  Следующий >   </b></a>			
+		</div>
+	</div>
+</body>
+</html>
