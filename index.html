@@ -19,16 +19,18 @@
 			<p><b>1. Введите имя и e-mail</b></p>
 		</div>
 		<div class="nameAndEmail" style="display :block;">
-			<p><input type="text" name="firstName" placeholder="Имя"></p>
-			<p><input type="text" name="eMail" placeholder="e-mail"></p>
-		</div>
-		<div class="countryAndCity" style="display :none;">
-			<p><input type="text" name="Country" placeholder="Страна"></p>
-			<p><input type="text" name="city" placeholder="Город"></p>
+			<p><input type="text" placeholder="Имя"></p>
+			<p><input type="email" placeholder="e-mail"></p>
 		</div>
 		<div class="buttons">
-			<a id="prevPage" onclick="prevPage()"><b>  < Предыдущий  </b></a>
-			<a id="nextPage" onclick="nextPage()"><b>  Следующий >   </b></a>			
+			<a class="prevPage" onclick="">
+				❮
+				<span>Предыдущий</span>
+			</a>
+			<a class="nextPage" onclick="">
+				<span>Следующий</span>
+				❯
+			</a>		
 		</div>
 	</div>
 </body>
