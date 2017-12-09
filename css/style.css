@@ -31,10 +31,10 @@ li.current{
 	width: 270px;
 	height: 30px;
 }
-.countryAndCity{
+.countryCity{
 	padding-top: 40px;
 }
-.countryAndCity input{
+.countryCity input{
 	width: 270px;
 	height: 30px;
 }

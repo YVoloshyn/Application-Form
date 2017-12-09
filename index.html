@@ -20,14 +20,18 @@
 		</div>
 		<div class="nameAndEmail" style="display :block;">
 			<p><input type="text" placeholder="Имя"></p>
-			<p><input type="email" placeholder="e-mail"></p>
+			<p><input name="email" type="email" placeholder="e-mail"></p>
+		</div>
+		<div class="countryCity" style="display :none;">
+			<p><input type="text" placeholder="Страна"></p>
+			<p><input type="text" placeholder="Город"></p>
 		</div>
 		<div class="buttons">
-			<a class="prevPage" onclick="">
+			<a class="prevPage" onclick="prevPage()">
 				❮
 				<span>Предыдущий</span>
 			</a>
-			<a class="nextPage" onclick="">
+			<a class="nextPage" onclick="nextPage()">
 				<span>Следующий</span>
 				❯
 			</a>		
