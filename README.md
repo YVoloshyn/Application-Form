@@ -4,8 +4,8 @@ This is Application form to create some result picture with img, name, emeil, so
 
 ## Getting Started
 
-TO run application, download to youe local PC all files and open 'index.html' .
+To run application, download to your local PC all files and open 'index.html' .
 
 ## Author
 
-* **Yaroslav Voloshyn** - *Initial work* - [YV](https://www.facebook.com/Voloshyn.Y.S)
+* **Yaroslav Voloshyn** - [YV](https://www.facebook.com/Voloshyn.Y.S)
