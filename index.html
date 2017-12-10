@@ -1,76 +1,196 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Анкета</title>
-	<link rel="stylesheet" href="css/style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script type="text/javascript" language="javascript" src="js/countries.json"></script> 
-	<script type="text/javascript" language="javascript" src="js/cities.json"></script> 
 
-	<script type="text/javascript" src="js/logic.js"></script>
+<head>
+    <meta charset='utf-8'>
+    <title>Анкета</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" language="javascript" src="js/countries.json"></script>
+    <script type="text/javascript" language="javascript" src="js/cities.json"></script>
+
+    <script type="text/javascript" src="js/logic.js"></script>
 </head>
+
 <body>
-	<div id="firstPage" style="display: block">
-		<div class="main-Box">
-			<div class="item-list">
-				<ul class="pager" style="padding-left: 0px;">
-					<li class="current"><span>1</span></li>
-					<li>2</li>
-					<li>3</li>
-					<li>4</li>
-				</ul>
-			</div>
-			<div class="text-place">
-				<p><b>1. Введите имя и e-mail</b></p>
-			</div>
-			<div class="nameAndEmail">
-				<p><input name="userName" type="text" placeholder="Имя"></p>
-				<p><input name="email" type="email" placeholder="e-mail"></p>
-			</div>
-			<div class="buttons">
-				<a class="prevPage" onclick="prevPage()" style="color: #bbbbbb">
+    <div id="firstPage" style="display: block">
+        <div class="main-Box">
+            <div class="item-list">
+                <ul class="pager" style="padding-left: 0px;">
+                    <li class="current" style="cursor:default;"><span>1</span></li>
+                    <li style="cursor:wait">2</li>
+                    <li style="cursor:wait">3</li>
+                    <li style="cursor:wait">4</li>
+                </ul>
+            </div>
+            <div class="text-place">
+                <p><b>1. Введите имя и e-mail</b></p>
+            </div>
+            <div class="nameAndEmail">
+                <p><input name="userName" type="text" placeholder="Имя"></p>
+                <p><input name="email" type="text" placeholder="e-mail" onblur="validateEmail(this);"></p>
+            </div>
+            <div id="wrongEmail" style="visibility: hidden;">
+                <p style="color:red;">В адресе должен быть символ "@"</p>
+            </div>
+            <div class="buttons" style="padding-top: 116px;">
+                <a class="prevPage" onclick="prevPage()" style="color: #bbbbbb; cursor:pointer">
 					❮
 					<span>Предыдущий</span>
 				</a>
-				<a class="nextPage" onclick="nextPage()">
+                <a class="nextPage" onclick="nextPage()" style="cursor:pointer">
 					<span>Следующий</span>
 					❯
-				</a>		
-			</div>
-		</div>
-	</div>
+				</a>
+            </div>
+        </div>
+    </div>
 
-	<div id="secondPage" style="display: none">
-		<div class="main-Box">
-		<div class="item-list">
-			<ul class="pager" style="padding-left: 0px;">
-				<li class="prev"><span>1</span></li>
-				<li class="current">2</li>
-				<li>3</li>
-				<li>4</li>
-			</ul>
-		</div>
-		<div class="text-place">
-			<p><b>2. Выберете страну и город</b></p>
-		</div>
-		<div class="countryCity">
-			<p><input type="text" id="userCountry" placeholder="Страна" list="country"></p>
-			<datalist id="country"></datalist>
+    <div id="secondPage" style="display: none">
+        <div class="main-Box">
+            <div class="item-list">
+                <ul class="pager" style="padding-left: 0px;">
+                    <li class="prev" style="cursor:pointer" onclick="prevPage()"><span>1</span></li>
+                    <li class="current" style="cursor:default;">2</li>
+                    <li style="cursor:wait">3</li>
+                    <li style="cursor:wait">4</li>
+                </ul>
+            </div>
+            <div class="text-place">
+                <p><b>2. Выберете страну и город</b></p>
+            </div>
+            <div class="countryCity">
+                <p><select id="userCountry" style="width: 274px; height: 36px;" onchange='citiesFun()'></select></p>
 
-			<p><input type="text" id="userCity" placeholder="Город" list="city"></p>
-			<datalist id="city"></datalist>
-		</div>
-		<div class="buttons">
-			<a class="prevPage" onclick="prevPage()">
+                <p><select id="userCity" style="width: 274px; height: 36px;">
+				<option value="" disabled selected>Город</option>
+			</select></p>
+            </div>
+            <div class="buttons">
+                <a class="prevPage" onclick="prevPage()" style="cursor:pointer">
 				❮
 				<span>Предыдущий</span>
 			</a>
-			<a class="nextPage" onclick="nextPage()">
+                <a class="nextPage" onclick="nextPage()" style="cursor:pointer">
 				<span>Следующий</span>
 				❯
-			</a>		
-		</div>
-	</div>
-	</div>
+			</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="thirdPage" style="display: none">
+        <div class="main-Box">
+            <div class="item-list">
+                <ul class="pager" style="padding-left: 0px;">
+                    <li class="prev" style="cursor:default;"><span>1</span></li>
+                    <li class="prev" style="cursor:pointer" onclick="prevPage()">2</li>
+                    <li class="current" style="cursor:default;">3</li>
+                    <li style="cursor:wait">4</li>
+                </ul>
+            </div>
+            <div class="text-place">
+                <p><b>3. Отметьте социальные сети</b></p>
+            </div>
+            <div class="social">
+                <div class="facebook">
+                    <p><input type="checkbox" name="Facebook" value="fb">Facebook</p>
+                    <p style="width: 90px;"></p>
+                    <p><input id="fb" placeholder="Ваша страница в Facebook" name="fb" style="height: 20px; width: 200px; display: none"></p>
+                </div>
+                <div class="vkontakte">
+                    <p><input type="checkbox" name="vk" value="vk">Вконтакте</p>
+                    <p style="width: 83px;"></p>
+                    <p><input id="vk" placeholder="Ваша страница Вконтакте" name="vk" style="height: 20px; width: 200px; display: none"></p>
+                </div>
+                <div class="twitter">
+                    <p><input type="checkbox" name="twitter" value="tw">Twitter</p>
+                    <p style="width: 107px;"></p>
+                    <p><input id="tw" placeholder="Ваша страница в Twitter" name="tw" style="height: 20px; width: 200px; display: none"></p>
+                </div>
+                <div class="odnoklassniki">
+                    <p><input type="checkbox" name="ok" value="ok">Одноклассники</p>
+                    <p style="width: 46px;"></p>
+                    <p><input id="ok" placeholder="...в Одноклассники" name="ok" style="height: 20px; width: 200px; display: none"></p>
+                </div>
+            </div>
+            <div class="buttons" style="padding-top: 62px;">
+                <a class="prevPage" onclick="prevPage()" style="cursor:pointer">
+				❮
+				<span>Предыдущий</span>
+			</a>
+                <a class="nextPage" onclick="nextPage()" style="cursor:pointer">
+				<span>Следующий</span>
+				❯
+			</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="fourthPage" style="display: none;">
+        <div class="main-Box" style="width: 700px;">
+            <div class="item-list" style="padding-left: 150px;">
+                <ul class="pager" style="padding-left: 0px;">
+                    <li class="prev" style="cursor:default;">1</li>
+                    <li class="prev" style="cursor:default;">2</li>
+                    <li class="prev" style="cursor:pointer" onclick="prevPage()">3</li>
+                    <li class="current" style="cursor:default;">4</li>
+                </ul>
+            </div>
+            <div class="text-place" style="padding-left: 150px;">
+                <p><b>4. Выберете любимого котика</b></p>
+            </div>
+            <div class="catPic">
+                <p>
+                    <img type="image" name="cat" src="img/cat1.jpg" style="height: 150px; width: 150px;" onclick="mark(this)">
+                </p>
+                <p>
+                    <img type="image" name="cat" src="img/cat2.jpg" style="height: 150px; width: 150px;" onclick="mark(this)">
+                </p>
+                <p>
+                    <img type="image" name="cat" src="img/cat3.jpg" style="height: 150px; width: 150px;" onclick="mark(this)">
+                </p>
+                <p>
+                    <img type="image" name="dog" src="img/dog4.jpg" style="height: 150px; width: 150px;" onclick="mark(this)">
+                </p>
+            </div>
+            <div id="wrongPic" style="visibility: hidden;">
+                <p style="color:red;"><b>Вы выбрали собачку. A надо котика.</b></p>
+            </div>
+            <div class="buttons" style="padding-left: 150px; padding-top: 74px;">
+                <a class="prevPage" onclick="prevPage()" style="cursor:pointer">
+				❮
+				<span>Предыдущий</span>
+			</a>
+                <a class="finish" onclick="nextPage()" style="cursor:pointer">
+				<span>Завершить</span>
+				❯
+			</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="fifthPage" style="display: none;">
+        <div class="main-Box" style="width: 600px;">
+            <div id="wrapper">
+                <div class="resultWindow">
+                    <div id="usrName"></div>
+                    <div id="usrEmail"></div>
+                    <div id="usrCity"></div>
+                    <div id="usrSocial"></div>
+                </div>
+                <div class="resIMG">
+                    <div id="usrPic"></div>
+                </div>
+            </div>
+
+            <div class="buttons" style="padding-top: 30px; padding-left: 250px;">
+                <div class="returnTest" style="padding-top: 10px; cursor:pointer" onclick="oneMoreTime()">
+                    Пройти заново
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
