@@ -17,6 +17,9 @@ body{
 li{
 	color: #bbbbbb;
 }
+li.prev{
+	color: #ff9800;
+}
 li.current{
 	color: #161616;
 }

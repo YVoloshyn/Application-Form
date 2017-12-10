@@ -2,27 +2,26 @@
 <html>
 <head>
 	<title>Анкета</title>
-	<link rel="stylesheet" href="css/style.css">
-	<script type="text/javascript" src="js/logic.js"></script>
+	<link rel="stylesheet" href="../css/style.css">
+	<script type="text/javascript" src="../js/logic.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-	<div id="content">
 	<div class="main-Box">
 		<div class="item-list">
 			<ul class="pager" style="padding-left: 0px;">
-				<li class="current"><span>1</span></li>
-				<li>2</li>
+				<li class="prev"><span>1</span></li>
+				<li class="current">2</li>
 				<li>3</li>
 				<li>4</li>
 			</ul>
 		</div>
 		<div class="text-place">
-			<p><b>1. Введите имя и e-mail</b></p>
+			<p><b>2. Выберете страну и город</b></p>
 		</div>
-		<div class="nameAndEmail">
-			<p><input name="userName" type="text" placeholder="Имя"></p>
-			<p><input name="email" type="email" placeholder="e-mail"></p>
+		<div class="countryCity">
+			<p><input type="text" placeholder="Страна"></p>
+			<p><input type="text" placeholder="Город"></p>
 		</div>
 		<div class="buttons">
 			<a class="prevPage" onclick="prevPage()">
@@ -34,7 +33,6 @@
 				❯
 			</a>		
 		</div>
-	</div>
 	</div>
 </body>
 </html>
