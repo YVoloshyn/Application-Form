@@ -59,6 +59,7 @@ li.current{
     float: left;    
 	margin-right: 8px;
 	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	padding-top: 5px;
 }
 .nextPage {
     width: 129px;
@@ -68,6 +69,7 @@ li.current{
     float: left;
 	margin-left : 8px;
 	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	padding-top: 5px;
 }
 .social{
 	padding-top: 40px;
@@ -100,7 +102,8 @@ li.current{
     float: left;
 	margin-left : 8px;
 	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-	text-align: center
+	text-align: center;
+	padding-top: 5px;
 }
 #picture {
 	border : 2px solid #ff9800;
