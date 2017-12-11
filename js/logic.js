@@ -9,36 +9,44 @@ var currPageNum = 1,
 //Функция переключения на следующую страницу
 function nextPage() {
     if (currPageNum == 1 && emailVal === true) {
-        userData.name = document.getElementsByName('userName')[0].value;
-        userData.email = document.getElementsByName('email')[0].value;
-        firstPage.style.display = "none";
-        secondPage.style.display = "block";
-        currPageNum = 2;
+        var fChacker = fieldChecker ();
+        if(fChacker){
+            userData.name = document.getElementsByName('userName')[0].value;
+            userData.email = document.getElementsByName('email')[0].value;
+            firstPage.style.display = "none";
+            secondPage.style.display = "block";
+            currPageNum = 2;            
+        }
     } else if (currPageNum == 1 && emailVal === false) {
         document.getElementById('wrongEmail').style.visibility = 'visible';
     } else if (currPageNum == 2) {
-        var selectedCountry = document.getElementById('userCountry'),
-            selectedCity = document.getElementById('userCity');
-        var selCountryName = selectedCountry.options[selectedCountry.selectedIndex].text,
-            selCityName = selectedCity.options[selectedCity.selectedIndex].text;
+        var fChacker = fieldChecker ();
+        if(fChacker){
+            var selectedCountry = document.getElementById('userCountry'),
+                selectedCity = document.getElementById('userCity');
+            var selCountryName = selectedCountry.options[selectedCountry.selectedIndex].text,
+                selCityName = selectedCity.options[selectedCity.selectedIndex].text;
 
-        userData.country = selCountryName;
-        userData.city = selCityName;
+            userData.country = selCountryName;
+            userData.city = selCityName;
 
-        secondPage.style.display = "none";
-        thirdPage.style.display = "block";
-        currPageNum = 3;
+            secondPage.style.display = "none";
+            thirdPage.style.display = "block";
+            currPageNum = 3;
+        }
 
     } else if (currPageNum == 3) {
-        userData.fb = document.getElementById('fb').value;
-        userData.vk = document.getElementById('vk').value;
-        userData.tw = document.getElementById('tw').value;
-        userData.ok = document.getElementById('ok').value;
+        var fChacker = fieldChecker ();
+        if(fChacker){
+            userData.fb = document.getElementById('fb').value;
+            userData.vk = document.getElementById('vk').value;
+            userData.tw = document.getElementById('tw').value;
+            userData.ok = document.getElementById('ok').value;
 
-        thirdPage.style.display = "none";
-        fourthPage.style.display = "block";
-        currPageNum = 4;
-
+            thirdPage.style.display = "none";
+            fourthPage.style.display = "block";
+            currPageNum = 4;
+        }
     } else if (currPageNum == 4) {
         var valPic = validatePic();
 
@@ -206,4 +214,38 @@ function objLength(obj) {
         }
     }
     return i;
+}
+
+//Функция проверки заполненности полей
+function fieldChecker () {
+    if(currPageNum == 1){
+        var name  = document.getElementsByName('userName')[0].value,
+            email = document.getElementsByName('email')[0].value;
+        if(name == ""){
+            alert("Заполните пожалуйста Имя !");
+            return false;
+        } return true;
+    }else if (currPageNum == 2){
+        var country = document.getElementById('userCountry').value,
+            city = document.getElementById('userCity').value;
+        if(country == ""){
+            alert("Выберете страну !");
+            return false;
+        }
+        if(city == ""){
+            alert("Выберете город !");
+            return false;
+        }
+        return true;
+    }else if(currPageNum == 3){
+        var fb = document.getElementById('fb').value,
+            vk = document.getElementById('vk').value,
+            tw = document.getElementById('tw').value,
+            ok = document.getElementById('ok').value;
+        if(fb == "" && vk == "" && tw == "" && ok == ""){
+            alert("Отметьте хотя бы одну социальную сеть !");
+            return false;
+        }
+        return true;
+    }
 }
